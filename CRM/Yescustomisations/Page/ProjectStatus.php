@@ -4,7 +4,7 @@ require_once 'CRM/Core/Page.php';
 
 class CRM_Yescustomisations_Page_ProjectStatus extends CRM_Core_Page {
   function run() {
-    $goal = 15000000;
+    $goal = 16250000;
     // Example: Set the page-title dynamically; alternatively, declare a static title in xml/Menu/*.xml
     CRM_Utils_System::setTitle(ts('Project Status'));
 
@@ -43,7 +43,7 @@ AND ac.account_type_code = 'INC'
     $this->assign('raised', $raised);
     $this->assign('goal', $goal);
     $this->assign('to_raise', $goal - $raised);
-    $this->assign('percent', (round($raised/ $goal, 2)) * 100 . "");
+    $this->assign('percent', (round($raised / $goal, 2)) * 100 . "");
     parent::run();
   }
 }
