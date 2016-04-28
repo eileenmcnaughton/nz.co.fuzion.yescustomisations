@@ -137,9 +137,18 @@ function yescustomisations_civicrm_buildForm($formName, &$form) {
       ');
     }
     elseif ($formID == 1) {
-      cj('#price_2').on('focus', function() {
-        cj("[data-amount=0]").click();
+      CRM_Core_Resources::singleton()->addScript("
+      cj('[data-amount=0]').hide().next('label').hide();
+      cj('input[type=radio]').on('click', function(){
+        if (cj(this).data('amount') > 0) {
+          cj('#price_2').val('').trigger('keyup');
+        }
       });
+
+      cj('#price_2').on('focus', function() {
+        cj('[data-amount=0]').click().trigger('click');
+      });"
+      );
     }
 
   }
