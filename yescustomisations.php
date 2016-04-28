@@ -123,6 +123,29 @@ function yescustomisations_civicrm_alterSettingsFolders(&$metaDataFolders = NULL
 }
 
 /**
+ * Implements hook_civicrm_buildForm().
+ */
+function yescustomisations_civicrm_buildForm($formName, &$form) {
+  if ($formName == 'CRM_Contribute_Form_Contribution_Main') {
+    $formID = $form->get('id');
+    if ($formID == 3) {
+      $form->setDefaults(array('is_recur' => 1));
+      $form->setDefaults(array('installments' => 50));
+      $form->setDefaults(array('price_8' => 20));
+      CRM_Core_Resources::singleton()->addScript('
+        cj("#is_recur").hide();
+      ');
+    }
+    elseif ($formID == 1) {
+      cj('#price_2').on('focus', function() {
+        cj("[data-amount=0]").click();
+      });
+    }
+
+  }
+}
+
+/**
  * Functions below this ship commented out. Uncomment as required.
  *
 
