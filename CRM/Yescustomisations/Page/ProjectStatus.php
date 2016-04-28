@@ -17,7 +17,7 @@ class CRM_Yescustomisations_Page_ProjectStatus extends CRM_Core_Page {
  sum(pledge_payment_civireport.actual_amount) as actual_amount_sum
 
 FROM civicrm_pledge pledge
-  LEFT JOIN (SELECT pledge_id, sum(actual_amount) as actual_amount
+  LEFT JOIN (SELECT pledge_id, sum(IF(status_id =1, actual_amount, 0)) as actual_amount
 
 FROM civicrm_pledge_payment
 
