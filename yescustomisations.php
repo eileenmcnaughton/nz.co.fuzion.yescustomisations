@@ -131,7 +131,7 @@ function yescustomisations_civicrm_buildForm($formName, &$form) {
     if ($formID == 3) {
       $form->setDefaults(array('is_recur' => 1));
       $form->setDefaults(array('installments' => 50));
-      $form->setDefaults(array('price_8' => 20));
+      $form->setDefaults(array('price_24' => 20));
       CRM_Core_Resources::singleton()->addScript('
         cj("#is_recur").hide();
       ');
